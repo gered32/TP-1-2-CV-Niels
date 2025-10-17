@@ -1,12 +1,15 @@
+$MaCouleurBasique: #222;
+$MaCouleurImportante: #2a7ae2;
+
 img#photo {
-    width: 150px;
-    height: auto;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto 16px auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,1);
-     transition: transform 1s;
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 16px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 1);
+  transition: transform 1s;
 }
 
 img#photo:hover {
@@ -14,82 +17,130 @@ img#photo:hover {
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f6f8;
-    color: #222;
-    margin: 0;
-    padding: 0;
-}
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: $MaCouleurBasique;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 
-.cv-container {
-    max-width: 800px;
-    margin: 40px auto;
-    background: #fff;
-    box-shadow: 0 4px 24px rgba(0,0,0,2);
-    border-radius: 12px;
-    padding: 32px;
-}
+  // Animation de fond douce
+  background: linear-gradient(-45deg, #f4f6f8, lighten($MaCouleurImportante, 40%), #ffffff, lighten($MaCouleurImportante, 25%));
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
 
-header {
+  header {
     border-bottom: 2px solid #e0e0e0;
     padding-bottom: 16px;
     margin-bottom: 24px;
+
+    h1 {
+      font-size: 2.4em;
+      margin: 0;
+      color: $MaCouleurImportante;
+    }
+  }
 }
 
-h1 {
-    font-size: 2.4em;
-    margin: 0;
-    color: #2a7ae2;
+.cv-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 32px;
 }
 
 h1#Prénom {
   font-family: 'DevilNet', sans-serif;
+  animation: textColor 5s ease-in-out infinite;
 }
 
 #age {
-    font-size: large;
-    font-weight: bold;
+  font-size: large;
+  font-weight: bold;
 }
 
 h2 {
-    font-size: 1.4em;
-    margin-top: 32px;
-    color: #2a7ae2;
-    border-left: 4px solid #2a7ae2;
-    padding-left: 12px;
+  font-size: 1.4em;
+  margin-top: 32px;
+  color: $MaCouleurImportante;
+  border-left: 4px solid $MaCouleurImportante;
+  padding-left: 12px;
 }
 
 .section {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 
 ul, ol {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 li {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 }
 
 .info {
-    display: flex;
-    gap: 24px;
-    font-size: 1em;
-    color: #555;
-    margin-top: 8px;
+  display: flex;
+  gap: 24px;
+  font-size: 1em;
+  color: #555;
+  margin-top: 8px;
 }
 
 @media (max-width: 600px) {
-    .cv-container {
-        padding: 12px;
-    }
-    .info {
-        flex-direction: column;
-        gap: 4px;
-    }
+  .cv-container {
+    padding: 12px;
+  }
+
+  .info {
+    flex-direction: column;
+    gap: 4px;
+  }
 }
 
 @font-face {
   font-family: 'DevilNet';
-  src: url('./The\ Devil\ Net.ttf') format('truetype');
+  src: url('./The Devil Net.ttf') format('truetype');
+}
+
+// Animation du fond
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Animation du texte h1
+
+@keyframes textColor {
+  0%   { color: $MaCouleurImportante; }
+  50%  { color: lighten($MaCouleurImportante, 30%); }
+  100% { color: $MaCouleurImportante; }
+}
+
+// Le truc qui tourne 
+.roue {
+  width: 20px;               // largeur de la roue
+  height: 20px;              // hauteur de la roue
+  border-radius: 50%;         // cercle parfait
+  border: 8px solid #ddd;     // couleur claire pour le contour
+  border-top: 8px solid #2a7ae2; // couleur foncée pour “l’aiguille”
+  margin: 40px auto;          // centrer horizontalement
+   animation: tourne 2s linear infinite;
+}
+
+@keyframes tourne {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
