@@ -37,7 +37,7 @@ body header h1 {
 }
 
 .cv-container {
-  max-width: 800px;
+  max-width: 50em;
   margin: 40px auto;
   background: #fff;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
